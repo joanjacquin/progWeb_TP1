@@ -40,6 +40,6 @@ document.addEventListener('keydown', function(e) {
 function activateCheats() {
   document.body.style.backgroundImage = "url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2Fe1%2F90%2F1d%2Fe1901d7fad1fe6d0a97993945aa34500.jpg&f=1&nofb=1&ipt=eb3d9f2498a481d1f29815c61b124adf6dacef9889655996fd27651c0f102d4f&ipo=images')";
 
-  var audio = new Audio('https://static.wikia.nocookie.net/ttte/images/f/f5/Thomas%26FriendsSeries1-7OpeningTheme.mp3/revision/latest?cb=20230915202107');
+  var audio = new Audio('ThomasTheTankEngine_Theme Song.mp3');
   audio.play();
 }
