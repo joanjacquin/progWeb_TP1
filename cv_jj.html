@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CV">
+    <meta name="theme-color" content="#1bb566">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2FKSlQNxHkKvah-e7POp27A9n_oL4%3D%2F0x0%3A136x136%2F1200x0%2Ffilters%3Afocal(0x0%3A136x136)%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_asset%2Ffile%2F9720741%2FZoe_e.jpg&f=1&nofb=1&ipt=e1937bcef494291251fdd7bd9e7a5b06043e45b8a9de5dc2c8886b4ebf1794ea&ipo=images" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>CV Joan Jacquin</title>
+    <style>
+
+        
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+            padding: 0;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 3px solid #007bff;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        header {
+            text-align: center;
+            background: linear-gradient(to right, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+        h1, h2, h3 {
+            color: #004085;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f1f8ff;
+            border-radius: 10px;
+            border-left: 5px solid #007bff;
+            transition: transform 0.3s ease-in-out;
+        }
+        section:hover {
+            transform: scale(1.02);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #90caf9;
+        }
+        abbr {
+            text-decoration: none;
+        }
+
+
+
+        /***************
+        *   timeline
+        ***************/
+        #timeline {
+            list-style: none;
+            margin: 50px 0 30px 120px;
+            padding-left: 30px;
+            border-left: 8px solid #007bff;
+        }
+        #timeline li {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .date {
+            width: 100px;
+            margin-top: -10px;
+            top: 50%;
+            left: -158px;
+            font-size: 0.95em;
+            line-height: 20px;
+            position: absolute;
+            display: block;
+            text-align: right;
+        }
+
+        .circle {
+            margin-top: -10px;
+            top: 50%;
+            left: -44px;
+            width: 10px;
+            height: 10px;
+            background: #007bff;
+            border: 5px solid #007bff;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+        }
+
+        .content {
+            max-height: 0px;
+            padding: 50px 20px 0;
+            border-color: transparent;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 0.5em;
+            position: relative;
+        }
+
+        .content:before, .content:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: solid transparent;
+            position: absolute;
+            pointer-events: none;
+            right: 100%;
+        }
+        .content:before {
+            border-right-color: inherit;
+            border-width: 20px;
+            top: 50%;
+            margin-top: -20px;
+        }
+        .content:after {
+            border-right-color: inherit;
+            border-width: 17px;
+            top: 50%;
+            margin-top: -17px;
+        }
+        .content p {
+            max-height: 0;
+            color: transparent;
+            text-align: justify;
+            word-break: break-word;
+            hyphens: auto;
+            overflow: hidden;
+        }
+
+        .lbltimeline {
+            margin-top: 15px;
+            position: absolute;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.2s linear;
+        }
+
+        .radio {
+            display: none;
+        }
+
+        .radio:checked + .relative label {
+            cursor: auto;
+            transform: translateX(42px);
+        }
+
+        .radio:checked + .relative .circle {
+            background: #ffffff;
+        }
+
+        .radio:checked ~ .content {
+            max-height: 100%;
+            border-color: #007bff;
+            margin-right: 20px;
+            transform: translateX(20px);
+            transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+        }
+        .radio:checked ~ .content p {
+            max-height: 100%;
+            color: #333;
+            transition: color 0.3s linear 0.3s;
+        }
+
+        /*****
+        * version mobile
+        *****/
+        @media screen and (max-width: 767px) {
+            #timeline {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+            }
+            #timeline li {
+                margin: 50px 0;
+                
+            }
+            #timeline p {
+                margin: 0 0 15px;
+            }
+            label {
+                width: 85%;
+                font-size: 1.1em;
+                top: -7px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: block;
+                transform: translateX(18px);
+            }
+            .content {
+                padding-top: 45px;
+                border-color: #007bff;
+            }
+            .content:before, .content:after {
+                border: solid transparent;
+                bottom: 100%;
+            }
+            .content:before {
+                border-bottom-color: inherit;
+                border-width: 17px;
+                top: -15px;
+                left: 50px;
+                margin-left: -17px;
+            }
+            .content:after {
+                border-bottom-color: transparent;
+                border-width: 20px;
+                top: -20px;
+                left: 50px;
+                margin-left: -20px;
+            }
+            .content p {
+                font-size: 0.9em;
+                line-height: 1.4;
+            }
+            .circle, .date {
+                display: none;
+            }
+        }
+        /* version mobile */
+        /*timeline */
+
+
+
+        /***************
+        *   skills
+        ***************/
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .skills li {
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            list-style: none;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* skills */
+
+
+
+        /***************
+        *   language bar
+        ***************/
+        .language-bar {
+            width: 100%;
+            background: #ddd;
+            border-radius: 10px;
+            margin: 5px 0;
+            position: relative;
+        }
+        .language-bar span {
+            display: block;
+            height: 20px;
+            background: #28a745;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-weight: bold;
+        }
+        /* language bar */
+
+
+
+        aside { /* quote bas du site */
+            font-style: italic;
+            color: #555;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        /***************
+        *   bloc music
+        ***************/
+        figure {
+            text-align: center;
+            margin-top: 20px;
+        }
+        figcaption {
+            font-style: italic;
+            color: #555;
+        }
+        .no-border {
+            border: none; /* Supprime la bordure */
+        }
+        /* bloc music*/
+
+        
+        /***************
+        *   anchors
+        ***************/
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        nav ul li {
+            display: inline;
+            margin: 5px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: #0056b3;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {
+            background: #003d82;
+        }
+        /* anchors */
+
+        
+        /***************
+        *   contact form
+        ***************/
+        input[type=text], select, textarea {
+            background-color: #ffffff;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type=submit]:hover {
+            background-color: #0056b3;
+        }
+        /* contact form */
+
+
+
+        /***************
+        *   réseaux sociaux
+        ***************/
+        .fa {
+            padding: 10px;
+            font-size: 30px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+        .fa:hover {
+            opacity: 0.7;
+        }
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+        .fa-instagram {
+            background: linear-gradient(to top right, #f9ce34, #ee2a7b, #6228d7);
+            color: white;
+        }
+        /* réseaux sociaux */
+        
+
+
+        /***************
+        *   Timetable
+        ***************/
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #007bff;
+        }
+        th {
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        tr:hover {
+            background: #d6e4ff;
+            transition: 0.3s;
+        }
+        td.cours {
+            background: #28a745;
+        }
+        td.special {
+            background: #ffcc00;
+            font-weight: bold;
+            color: #333;
+        }
+        /* Timetable */
+
+
+
+        /***************
+        *   profile pic
+        ***************/
+        .idpic {
+            border-radius: 10%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .idpic:hover {
+            transform: scale(1.1);
+        }
+        /* profile pic */
+
+
+        /***************
+        *   dark mode
+        ***************/
+        .dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        .dark-mode h2{
+            color: #3b87da;
+        }
+        .dark-mode h3 {
+            color: #3b87da;
+        }
+        .dark-mode .container {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            border-color: #90caf9;
+        }
+        .dark-mode .radio:checked ~ .content p {
+            color: #e0e0e0;
+        }
+        .dark-mode .language-bar {
+            background: #444444;
+        }
+        .dark-mode input[type=text] {
+            color: #e0e0e0;
+            background-color: #2a2a2a;
+        }
+        .dark-mode select {
+            color: #e0e0e0;
+            background-color: #2a2a2a;
+        }
+        .dark-mode textarea {
+            color: #e0e0e0;
+            background-color: #2a2a2a;
+        }
+        
+        /* timetable */
+        .dark-mode tr:hover {
+            background: #0d47a1;
+        }
+        .dark-mode th {
+            color: #2a2a2a;
+        }
+
+
+        .dark-mode header {
+            background: linear-gradient(to right, #0d47a1, #1e88e5);
+        }
+        .dark-mode section {
+            background: #2a2a2a;
+            border-left: 5px solid #90caf9;
+        }
+
+        /*form button*/
+        .dark-mode input[type=submit] {
+            background-color: #90caf9;
+            color: #1e1e1e;
+        }
+        .dark-mode input[type=submit]:hover {
+            background-color: #0056b3;
+        }
+        /**/
+
+        .dark-mode footer {
+            background: #0d47a1;
+        }
+        .dark-mode button {
+            background: #90caf9;
+            color: #121212;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        /* dark mode*/
+
+
+
+    </style>
+</head>
+<body>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
+    <button id="switch" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div class="container">
+        <header>
+            <h1>Joan Jacquin</h1>
+            <figure>
+                <img class="idpic" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F08%2F39%2F4d%2F08394da22167fc5598b3d57d15d4b7aa.jpg&f=1&nofb=1&ipt=51b3cd0f21533fd7f1fee2d9ad149fe033e873ffc0a66d022a76f1131c1d7c7c&ipo=images" width="150" alt="Crying cat">
+                <figcaption style="color: white;"><h6 style="margin-top: 0px;">Moi quand algèbre <sub><small>lol</small></sub></h6></figcaption>
+            </figure>
+            <p><strong>Email:</strong> <a href="mailto:joan@caramail.com"><b>joan@caramail.com</b></a> | <strong>Téléphone:</strong> +33 7 68 XX XX XX | <strong>Adresse:</strong> 46800 Montcuq</p>
+            <p><strong>LinkedIn:</strong> <a href="https://pointerpointer.com/">linkedin.com/in/jaidefouunlinkedinouais</a></p>
+            <nav>
+                <ul>
+                    <li><a href="#summary">Profil</a></li>
+                    <li><a href="#experience">Expérience</a></li>
+                    <li><a href="#education">Éducation</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#languages">Langues</a></li>
+                    <li><a href="#music">Musique</a></li>
+                    <li><a href="#horaires">Horaires</a></li>
+                    <li><a href="#contactform">Formulaire de contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section id="summary">
+            <h2>Profil</h2>
+            <p>
+                Bénévole à plein temps, je suis engagé dans plusieurs associations.
+            </p>
+            <p>
+                Je regarde beaucoup de dessins animés et de films. J'écoute aussi beaucoup de musique, et fait de la guitare depuis mes 8 ans.
+            </p>
+            <p>
+                Ma couleur préférée c'est le violet (ouais on dirait pas comme ça).
+                <br>
+                Joueur de <abbr title="↑ ↑ ↓ ↓ ← → ← → B A"><del>Yu-Gi-Oh!</del></abbr> <sup><small>purrely</small></sup>.
+            </p>
+        </section>
+        
+        <section id="experience">
+            <h2>Expérience</h2>
+            <!-- Timeline -->
+            <ul id='timeline'>
+                <li class='work'>
+                    <input class='radio' id='work4' name='works' type='radio'>
+                    <div class="relative">
+                        <h3><label class="lbltimeline" for='work4'>Responsable Louveteaux</label></h3>
+                        <span class='date'>2024 - présent</span>
+                        <span class='circle'></span>
+                    </div>
+                    <div class='content'>
+                        <p style="margin: -5px 0px 25px;"><strong><abbr title="Éclaireuses et Éclaireurs Unionistes de France">EEUdF</abbr></strong>, <i>Colmar-Munster</i></p>
+                        <p>
+                            Organisation et animation en équipe de la vie quotidenne et de l'activité du groupe dans le cadre du <a href="https://eeudf.org/projet-educatif/">projet éducatif</a> du mouvement.
+                        </p>
+                    </div>
+                  </li>
+                <li class='work'>
+                    <input class='radio' id='work3' name='works' type='radio'>
+                    <div class="relative">
+                        <h3><label class="lbltimeline" for='work3'>Responsable Communication</label></h3>
+                        <span class='date'>2024 - 2025</span>
+                        <span class='circle'></span>
+                    </div>
+                    <div class='content'>
+                        <p style="margin: -5px 0px 25px;"><strong><abbr title="Amicale Des Étudiant.e.s en Mathématiques">ADEM</abbr></strong>, <i>Strasbourg</i></p>
+                        <p>
+                            Gestion des réseaux sociaux de l'ADEM.
+                            Création et planification des posts.
+                        </p>
+                    </div>
+                  </li>
+                <li class='work'>
+                    <input class='radio' id='work2' name='works' type='radio'>
+                    <div class="relative">
+                        <h3><label class="lbltimeline" for='work2'>Crêpier</label></h3>
+                        <span class='date'>Octobre 2022</span>
+                        <span class='circle'></span>
+                    </div>
+                    <div class='content'>
+                        <p style="margin: -5px 0px 25px;"><strong>Cora</strong>, <i>Colmar-Houssen</i></p>
+                        <p>
+                            1kg de farine<br>
+                            8 oeufs<br>
+                            1L de lait
+                        </p>
+                        <p>
+                            Tamiser la farine dans un saladier. Y faire un puit avant d'y casser les oeufs. Mélanger, et rajouter le lait petit à petit afin de ne pas avoir de grumeaux.
+                        </p>
+                    </div>
+                  </li>
+                <li class='work'>
+                    <input class='radio' id='work1' name='works' type='radio'>
+                    <div class="relative">
+                        <h3><label class="lbltimeline" for='work1'>Scribe</label></h3>
+                        <span class='date'>18 juin 2007</span>
+                        <span class='circle'></span>
+                    </div>
+                    <div class='content'>
+                    <p>
+                        Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l’interlocuteur en face je dirais, le miroir qui vous aide à avancer. Alors ça n’est pas mon cas, comme je disais là, puisque moi au contraire, j’ai pu ; et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie... je ne suis qu’amour ! Et finalement, quand des gens me disent « Mais comment fais-tu pour avoir cette humanité ? », je leur réponds très simplement que c’est ce goût de l’amour, ce goût donc qui m’a poussé aujourd’hui à entreprendre une construction mécanique... mais demain qui sait ? Peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+        </section>
+        
+        <section id="education">
+            <h2>Éducation</h2>
+            <article>
+                <h3><a href="https://mathinfo.unistra.fr/formations/licence/informatique">Licence d'Informatique</a></h3>
+                <p><strong>UFR de mathématique et d'informatique</strong>, <i>Strasbourg</i> | 2024 - présent</p>
+            </article>
+            <hr>
+            <article>
+                <h3><a href="https://www.esma-artistique.com/formations/animation-3dfx/">Cinéma d'Animation & Effets Spéciaux</a></h3>
+                <p><strong>ESMA</strong>, <i>Nantes</i> | 2019 - 2022</p>
+            </article>
+            <hr>
+            <article>
+                <h3>Baccalauréat <abbr title="Sciences et Technologies du Design et des Arts Appliqués">STD2A</abbr></h3>
+                <p><strong>Lycée Le Corbusier</strong>, <i>Illkirch-Graffenstaden</i> | 2017 - 2019</p>
+                
+            </article>
+        </section>
+        
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="skills">
+                <li>C</li>
+                <li>Python</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>SQL</li>
+                <li>Blender</li>
+                <li>Maya</li>
+                <li>NukeX</li>
+            </ul>
+        </section>
+        
+        <section id="languages">
+            <h2>Langues</h2>
+            <div class="language-bar"><span style="width: 100%">Français - Natif</span></div>
+            <div class="language-bar"><span style="width: 100%">Anglais - C1</span></div>
+            <div class="language-bar"><span style="width: 60%">Portugais - B1</span></div>
+            <div class="language-bar"><span style="width: 20%">Klingon - A2</span></div>
+        </section>
+        
+        <section id="music">
+            <h2>Musique</h2>
+            <figure>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4WzGpAiyqaJ22ISlx9FDT3" class="no-border" width="400" height="180" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <figcaption>Parce que le monde n'est rien sans un peu de musique.</figcaption>
+            </figure>
+        </section>
+
+        <section id="horaires">
+            <h2>Horaires</h2>
+            <table>
+                <tr>
+                    <th>Heures/Jours</th>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
+                </tr>
+                <tr>
+                    <td class="highlight"><b><time>08:00</time></b></td>
+                    <td class="cours"></td>
+                    <td class="cours"></td>
+                    <td></td>
+                    <td class="cours"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="highlight"><b><time>10:00</time></b></td>
+                    <td class="cours"></td>
+                    <td></td>
+                    <td class="cours"></td>
+                    <td class="cours"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="highlight"><b><time>12:00</time></b></td>
+                    <td colspan="5" class="special"><b>DEJEUNER</b></td>
+                </tr>
+                <tr>
+                    <td class="highlight"><b><time>13:30</time></b></td>
+                    <td class="cours"></td>
+                    <td class="cours"></td>
+                    <td class="cours"></td>
+                    <td></td>
+                    <td class="cours"></td>
+                </tr>
+                <tr>
+                    <td class="highlight"><b><time>15:30</time></b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="cours"></td>
+                </tr>
+                <tr>
+                    <td class="highlight"><b><time>17:30</time></b></td>
+                    <td class="cours"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </section>
+        
+        <section id="contactform">
+            <h2>Formulaire de contact</h2>
+            
+            <div class="container">
+                <form onsubmit="rickroll()">
+                    
+                    <label for="fname">Prénom</label>
+                    <input type="text" id="fname" name="firstname" placeholder="John">
+                
+                    <label for="lname">Nom</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Smith">
+                    <br>
+                    <label for="raison">Raison du message</label>
+                    <br>
+                    <select id="raison" name="raison">
+                    <option value="Professionnel">Professionnel</option>
+                    <option value="Fan letter">Fan letter</option>
+                    <option value="Troll">Troll</option>
+                    </select>
+                
+                    <label for="sujet">Sujet</label>
+                    <textarea id="sujet" name="sujet" placeholder="verbe complément" style="height:200px"></textarea>
+                
+                    <input type="submit" value="Envoyer">
+                    
+                </form>
+              </div> 
+        </section>
+
+        <aside>
+            <p><samp>"01100110 01110010 01100101 01100101"</samp></p>
+        </aside>
+        
+        <footer>
+            <a href="https://www.facebook.com/gerardway" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/YuGiOh_TCG" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/inst_adem/" target="_blank" class="fa fa-instagram"></a>
+            <p>&copy; 2025 Joan Jacquin. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- KONAMI -->
+        <script src="konami.js"></script>
+
+    <script>
+        function toggleDarkMode() {
+            if (document.body.classList.contains('dark-mode')){
+                document.getElementById("switch").textContent="Toggle Dark Mode";
+            }
+            else{
+                document.getElementById("switch").textContent="Toggle Light Mode";
+            }
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function rickroll(){
+            event.preventDefault(); // Empêche la soumission du formulaire
+            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+        }
+    </script>
+
+</body>
+</html>
